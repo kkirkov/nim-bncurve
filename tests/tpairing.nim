@@ -1,5 +1,5 @@
 import unittest
-import ../bncurve/groups
+import ../bncurve/[groups, random]
 
 proc testPreparedG2(): bool =
   var expect = G2Precomp(

@@ -1,5 +1,5 @@
 import unittest
-import ../bncurve/arith
+import ../bncurve/[arith, random]
 
 when isMainModule:
   let modulo = [

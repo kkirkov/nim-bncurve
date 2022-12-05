@@ -1,5 +1,5 @@
 import unittest
-import ../bncurve/groups
+import ../bncurve/[groups, random]
 
 proc randomAdd*(G: typedesc): bool =
   for i in 0..<10:

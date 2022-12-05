@@ -6,15 +6,9 @@
 # at your option.
 # This file may not be copied, modified, or distributed except according to
 # those terms.
-import options
-import fp, arith
-
+import options, arith, fp, types
 {.deadCodeElim: on.}
 
-type
-  FQ2* = object
-    c0*: FQ
-    c1*: FQ
 
 const
   FQNonResidue = FQ([
@@ -44,10 +38,6 @@ proc zero*(t: typedesc[FQ2]): FQ2 {.inline, noinit.} =
 proc one*(t: typedesc[FQ2]): FQ2 {.inline, noinit.} =
   result.c0 = FQ.one()
   result.c1 = FQ.zero()
-
-proc random*(t: typedesc[FQ2]): FQ2 {.inline, noinit.} =
-  result.c0 = FQ.random()
-  result.c1 = FQ.random()
 
 proc isZero*(x: FQ2): bool {.inline, noinit.} =
   result = (x.c0.isZero() and x.c1.isZero())

@@ -6,8 +6,7 @@
 # at your option.
 # This file may not be copied, modified, or distributed except according to
 # those terms.
-import options
-import fq6, fq2, fp, arith
+import options, arith, fp, fq2, fq6, types
 
 {.deadCodeElim: on.}
 
@@ -32,11 +31,6 @@ const frobeniusCoeffsC1: array[4, FQ2] = [
   )
 ]
 
-type
-  FQ12* = object
-    c0*: FQ6
-    c1*: FQ6
-
 proc init*(c0, c1: FQ6): FQ12 {.inline, noinit.} =
   result.c0 = c0
   result.c1 = c1
@@ -48,10 +42,6 @@ proc zero*(t: typedesc[FQ12]): FQ12 {.inline, noinit.} =
 proc one*(t: typedesc[FQ12]): FQ12 {.inline, noinit.} =
   result.c0 = FQ6.one()
   result.c1 = FQ6.zero()
-
-proc random*(t: typedesc[FQ12]): FQ12 {.inline, noinit.} =
-  result.c0 = FQ6.random()
-  result.c1 = FQ6.random()
 
 proc isZero*(x: FQ12): bool {.inline, noinit.} =
   result = (x.c0.isZero() and x.c1.isZero())
